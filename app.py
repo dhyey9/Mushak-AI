@@ -24,11 +24,11 @@ genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
 def load_models():
     object_detector = pipeline("object-detection", model="hustvl/yolos-tiny")
     summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
-    translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-hi")
+    translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-hi", timeout=500)
     qa_model = pipeline("question-answering", model="deepset/roberta-base-squad2")
     image_captioner = VisionEncoderDecoderModel.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
     image_processor = ViTImageProcessor.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
-    tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning",timeout=300)
+    tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning",timeout=500)
     
     return object_detector, summarizer, translator, qa_model, image_captioner, image_processor, tokenizer
 
