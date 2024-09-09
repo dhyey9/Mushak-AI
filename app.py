@@ -28,7 +28,7 @@ def load_models():
     qa_model = pipeline("question-answering", model="deepset/roberta-base-squad2")
     image_captioner = VisionEncoderDecoderModel.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
     image_processor = ViTImageProcessor.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
-    tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
+    tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning",timeout=300)
     
     return object_detector, summarizer, translator, qa_model, image_captioner, image_processor, tokenizer
 
